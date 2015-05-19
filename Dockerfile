@@ -1,9 +1,11 @@
 FROM ubuntu:latest
-MAINTAINER Ilya Stepanov <dev@ilyastepanov.com>
+MAINTAINER David Sauer <info@suchgenie.de>
+
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y nginx php5-fpm php5-gd curl && \
+    apt-get upgrade -y && \
+    apt-get install -y nginx php5-fpm php5-gd curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
