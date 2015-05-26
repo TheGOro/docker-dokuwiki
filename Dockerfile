@@ -23,7 +23,7 @@ VOLUME [ \
     "/var/www/data/", \
     "/var/www/lib/tpl", \
     "/var/www/lib/plugins", \
-    "/var/www/conf"
+    "/var/www/conf" \
 ]
 
 CMD /usr/sbin/php5-fpm && /usr/sbin/nginx
