@@ -4,7 +4,6 @@ MAINTAINER David Sauer <info@suchgenie.de>
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y nginx php5-fpm php5-gd curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
