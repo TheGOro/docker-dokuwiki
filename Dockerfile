@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:15.10
 MAINTAINER David Sauer <info@suchgenie.de>
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
