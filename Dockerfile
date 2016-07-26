@@ -7,25 +7,11 @@ ENV MD5_CHECKSUM 9b9ad79421a1bdad9c133e859140f3f2
 RUN apk --no-cache add php7 php7-fpm php7-gd php7-session php7-xml nginx supervisor curl tar
 
 RUN mkdir -p /run/nginx && \
-    mkdir -p /var/www /var/dokuwiki-storage/data && \
+    mkdir -p /var/www && \
     cd /var/www && \
     curl -O -L "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-$DOKUWIKI_VERSION.tgz" && \
     tar -xzf "dokuwiki-$DOKUWIKI_VERSION.tgz" --strip 1 && \
-    rm "dokuwiki-$DOKUWIKI_VERSION.tgz" && \
-    mv /var/www/data/pages /var/dokuwiki-storage/data/pages && \
-    ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
-    mv /var/www/data/meta /var/dokuwiki-storage/data/meta && \
-    ln -s /var/dokuwiki-storage/data/meta /var/www/data/meta && \
-    mv /var/www/data/media /var/dokuwiki-storage/data/media && \
-    ln -s /var/dokuwiki-storage/data/media /var/www/data/media && \
-    mv /var/www/data/media_attic /var/dokuwiki-storage/data/media_attic && \
-    ln -s /var/dokuwiki-storage/data/media_attic /var/www/data/media_attic && \
-    mv /var/www/data/media_meta /var/dokuwiki-storage/data/media_meta && \
-    ln -s /var/dokuwiki-storage/data/media_meta /var/www/data/media_meta && \
-    mv /var/www/data/attic /var/dokuwiki-storage/data/attic && \
-    ln -s /var/dokuwiki-storage/data/attic /var/www/data/attic && \
-    mv /var/www/conf /var/dokuwiki-storage/conf && \
-    ln -s /var/dokuwiki-storage/conf /var/www/conf
+    rm "dokuwiki-$DOKUWIKI_VERSION.tgz"
 
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
