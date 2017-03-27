@@ -14,6 +14,7 @@ for dir in data/pages data/meta data/media data/media_attic data/media_meta data
     ln -s /var/dokuwiki-storage/$dir /var/www/$dir
 done
 
+chown -R nobody /var/lib/nginx
 chown -R nobody /var/www
 chown -R nobody /var/dokuwiki-storage
 
